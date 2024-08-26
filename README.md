@@ -1,27 +1,46 @@
 # NgxFuncPipe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+NgxFuncPipe is a simple and lightweight Angular pipe that allows you to call a function directly from your Angular templates. This utility is particularly useful when you need to invoke a function with arguments in your Angular templates.
 
-## Development server
+### Installation
+You can install this library using npm or yarn:
+npm install ngx-func-pipe
+yarn add ngx-func-pipe
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Type-safe Template Usage
+Since Angular's templates are now type-safe, the function and its argument types will be reflected in the template, giving you full IntelliSense support:  
 
-## Code scaffolding
+```
+import { Component } from '@angular/core';
+import { NgxFuncPipe } from 'ngx-func-pipe';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@Component({
+  selector: 'app-math',
+  template: `
+    <div>
+      <!-- The type of foo and bar will be reflected in the template -->
+      <p>Sum: {{ foo | ngxFunc: 5: 10 }}</p>
+      @if ((bar | ngxFunc: 'str': 1); as result) {
+        {{ result }}
+      }
+    </div>
+  `,
+  standalone: true,
+  imports: [NgxFuncPipe]
+})
+export class MathComponent {
+  foo(arg1: number, arg2: number): number {
+    return arg1 + arg2;
+  }
 
-## Build
+  bar(arg1: string, arg2: number): boolean {
+    return arg1 && arg2;
+  }
+}
+```  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Features
+- Standalone Pipe: The NgxFuncPipe is a standalone Angular pipe, meaning it can be used without being declared in an Angular module.
+- Function Invocation in Templates: It allows you to invoke a function directly from your Angular templates with the required arguments.
+- Type-safe Templates: Full support for Angular's type-safe templates, ensuring that function types and arguments are reflected in the template.
+- Pure Pipe: The pipe is pure, meaning it only re-evaluates when its input values change, providing performance benefits.
