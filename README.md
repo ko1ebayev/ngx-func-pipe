@@ -1,6 +1,12 @@
 # NgxFuncPipe
 
-NgxFuncPipe is a simple and lightweight Angular pipe that allows you to call a function directly from your Angular templates. This utility is particularly useful when you need to invoke a function with arguments in your Angular templates.
+NgxFuncPipe is a simple and lightweight Angular pipe that allows you to call a function directly from your Angular templates. This utility is particularly useful when you need to invoke a function with arguments in your Angular templates.  
+
+### Features
+- Standalone Pipe: The NgxFuncPipe is a standalone Angular pipe, meaning it can be used without being declared in an Angular module.
+- Function Invocation in Templates: It allows you to invoke a function directly from your Angular templates with the required arguments.
+- Type-safe Templates: Full support for Angular's type-safe templates, ensuring that function types and arguments are reflected in the template.
+- Pure Pipe: The pipe is pure, meaning it only re-evaluates when its input values change, providing performance benefits.
 
 ### Installation
 You can install this library using npm or yarn:
@@ -38,9 +44,3 @@ export class MathComponent {
   }
 }
 ```  
-
-### Features
-- Standalone Pipe: The NgxFuncPipe is a standalone Angular pipe, meaning it can be used without being declared in an Angular module.
-- Function Invocation in Templates: It allows you to invoke a function directly from your Angular templates with the required arguments.
-- Type-safe Templates: Full support for Angular's type-safe templates, ensuring that function types and arguments are reflected in the template.
-- Pure Pipe: The pipe is pure, meaning it only re-evaluates when its input values change, providing performance benefits.
